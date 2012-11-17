@@ -22,15 +22,17 @@ public class ParameterizedTest {
 	private final Long idParam;
 	private final User userParam;
 
-	public ParameterizedTest(final Long id, final User user) {
-		this.idParam = id;
-		this.userParam = user;
+	public ParameterizedTest(final Long idParam, final User userParam) {
+		this.idParam = idParam;
+		this.userParam = userParam;
 	}
 
 	@Test
 	public void testUserMapping() {
 		UserDao userDao = new UserDao();
 		User user = userDao.findById(idParam);
+		System.err.print(idParam + " :\t");
+		System.err.println(userParam.toString());
 		assertEquals(idParam, user.getId());
 		assertEquals(userParam.getName(), user.getName());
 	}
