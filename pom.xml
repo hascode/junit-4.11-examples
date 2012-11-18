@@ -3,11 +3,29 @@
   <groupId>com.hascode.tutorial</groupId>
   <artifactId>junit-4.11-examples</artifactId>
   <version>0.0.1</version>
+  <url>http://www.hascode.com</url>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
   <dependencies>
   	<dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
-  		<version>4.11-beta-1</version>
+  		<version>4.11</version>
   	</dependency>
   </dependencies>
+  
+  <build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.6</source>
+                <target>1.6</target>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>

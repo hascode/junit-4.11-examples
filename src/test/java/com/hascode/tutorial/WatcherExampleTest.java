@@ -27,7 +27,6 @@ public class WatcherExampleTest {
 
 	@Test
 	public void testIgnored() {
-		assumeFalse(true);
+		assumeFalse(true); // assumption fails
 	}
-
 }

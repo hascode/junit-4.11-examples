@@ -11,29 +11,23 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class ParameterizedTest {
-	@Parameters(name = "Run {index}: findUserById({0})={1}")
+	@Parameters(name = "Run #{index}: {0}^2={1}")
 	public static Iterable<Object[]> data() {
-		return Arrays.asList(new Object[][] { { 1l, new User(1l, "Fred") },
-				{ 3l, new User(3l, "Suzie") }, { 5l, new User(5l, "Tim") },
-				{ 666l, new User(666l, "Luzi") },
-				{ 1024l, new User(1025l, "Bob") } });
+		return Arrays.asList(new Object[][] { { 1, 1 }, { 2, 4 }, { 3, 9 },
+				{ 4, 16 }, { 5, 25 } });
 	}
 
-	private final Long idParam;
-	private final User userParam;
+	private final int input;
+	private final int resultExpected;
 
-	public ParameterizedTest(final Long idParam, final User userParam) {
-		this.idParam = idParam;
-		this.userParam = userParam;
+	public ParameterizedTest(final int input, final int result) {
+		this.input = input;
+		this.resultExpected = result;
 	}
 
 	@Test
 	public void testUserMapping() {
-		UserDao userDao = new UserDao();
-		User user = userDao.findById(idParam);
-		System.err.print(idParam + " :\t");
-		System.err.println(userParam.toString());
-		assertEquals(idParam, user.getId());
-		assertEquals(userParam.getName(), user.getName());
+		Calculator calc = new Calculator();
+		assertEquals(resultExpected, calc.square(input));
 	}
 }
